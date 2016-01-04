@@ -10,6 +10,8 @@
         <script src="bower-components/angular/angular.js"></script>
         <script src="bower-components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="farm-app.js"></script>
+        <script src="directives/map-panel.js"></script>
+        <script src="directives/map-panel-ctrl.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -17,27 +19,9 @@
                 <h1>farm</h1>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-md-7">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <!--<div class="btn-group pull-right" role="group">-->
-                                <!--<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>-->
-                                <!--<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>-->
-                            <!--</div>-->
-                            <h2 class="panel-title">Map</h2>
-                        </div>
-                        <div class="panel-body row map">
-                            <div class="col-xs-4 bg-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                            <div class="col-xs-4"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                            <div class="col-xs-4 bg-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                            <div class="col-xs-4"><span class="glyphicon glyphicon-grain" aria-hidden="true"></span></div>
-                            <div class="col-xs-4 bg-primary"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></div>
-                            <div class="col-xs-4"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                            <div class="col-xs-4 bg-primary"><span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span></div>
-                            <div class="col-xs-4"><span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span></div>
-                            <div class="col-xs-4 bg-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
-                        </div>
-                    </div>
+                <div
+                        map-panel
+                        class="col-xs-12 col-md-7">
                 </div>
                 <div class="col-xs-12 col-md-5">
                     <div class="panel panel-default">
