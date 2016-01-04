@@ -1,0 +1,9 @@
+.map {
+    font-size: 108px;
+    line-height: 1.2em;
+}
+.map div {
+    height: 150px;
+    padding-top: 20px;
+    text-align: center;
+}

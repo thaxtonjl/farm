@@ -1,0 +1,6 @@
+# IDE
+/.idea/
+
+# External Libraries
+/node_modules/
+/client/src/bower-components
