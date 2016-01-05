@@ -12,28 +12,22 @@
         // Properties
         vm.tileRows = getTiles();
 
-        init();
-
-        function init() {
-            //
-        }
-
         function getTiles() {
             return [
                 [
                     {
-                        glyphicon: 'grain'
+                        type: 'meadow'
                     },
                     {
-                        glyphicon: 'home'
+                        type: 'home'
                     }
                 ],
                 [
                     {
-                        glyphicon: 'tree-deciduous'
+                        type: 'forest'
                     },
                     {
-                        glyphicon: 'tree-conifer'
+                        type: 'forest'
                     }
                 ]
             ];
