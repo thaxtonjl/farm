@@ -17,3 +17,45 @@ map-tile {
 map-tile.map-tile-active {
     border-color: #337ab7;
 }
+.goal {
+    position: relative;
+    height: 40px;
+}
+.goal div {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.goal .goal-progress {
+    height: 40px;
+    background-color: #dddddd;
+}
+.goal[data-grade="A"] {
+    color: white;
+}
+.goal[data-grade="A"] .goal-progress {
+    background-color: green;
+    color: white;
+}
+.goal[data-grade="B"] .goal-progress {
+    background-color: yellow;
+}
+.goal[data-grade="C"] .goal-progress {
+    background-color: orange;
+}
+.goal[data-grade="D"] {
+    color: white;
+}
+.goal[data-grade="D"] .goal-progress {
+    background-color: red;
+}
+.goal[data-grade="F"] {
+    color: white;
+}
+.goal[data-grade="F"] .goal-progress {
+    background-color: black;
+}
+.goal .goal-title {
+    height: 20px;
+    padding: 10px;
+}

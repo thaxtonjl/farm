@@ -10,8 +10,8 @@
         <script src="bower-components/angular/angular.js"></script>
         <script src="bower-components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="farm-app.js"></script>
-        <script src="directives/map-panel.js"></script>
-        <script src="directives/map-panel-ctrl.js"></script>
+        <script src="directives/map-panel/map-panel.js"></script>
+        <script src="directives/map-panel/map-panel-ctrl.js"></script>
         <script src="directives/map-tile/map-tile.js"></script>
         <script src="directives/map-tile/map-tile-ctrl.js"></script>
     </head>
@@ -21,25 +21,27 @@
                 <h1>farm</h1>
             </div>
             <div class="row">
-                <div
-                        map-panel
-                        class="col-xs-12 col-md-7">
-                </div>
+                <map-panel class="col-xs-12 col-md-7"></map-panel>
                 <div class="col-xs-12 col-md-5">
                     <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Goals</h2>
+                        </div>
+                        <ul class="list-group">
+                            <li
+                                    class="list-group-item goal"
+                                    data-grade="B">
+                                <div class="goal-progress" style="width:85%"></div>
+                                <div class="goal-title">Grade: B</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <!--<div class="btn-group pull-right" role="group">-->
                             <!--<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>-->
                             <!--<button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>-->
                             <!--</div>-->
-                            <h2 class="panel-title">Details</h2>
-                        </div>
-                        <ul class="list-group">
-                            <li class="list-group-item">Grades</li>
-                        </ul>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
                             <h2 class="panel-title">Actions</h2>
                         </div>
                         <ul class="list-group">

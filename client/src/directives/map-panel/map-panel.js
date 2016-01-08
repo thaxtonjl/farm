@@ -9,8 +9,8 @@
         return {
             controller: 'MapPanelCtrl',
             controllerAs: 'mapPanel',
-            restrict: 'A',
-            templateUrl: '/directives/map-panel.html'
+            restrict: 'E',
+            templateUrl: '/directives/map-panel/map-panel.html'
         };
     }
 
