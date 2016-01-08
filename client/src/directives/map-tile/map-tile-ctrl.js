@@ -10,6 +10,7 @@
         var vm = this;
 
         // Properties
+        vm.active = false;
         vm.glyphicon = '';
 
         init();
@@ -18,6 +19,7 @@
             switch (vm.options.type) {
                 case 'home':
                     vm.glyphicon = 'home';
+                    vm.active = true;
                     break;
                 case 'meadow':
                     vm.glyphicon = 'grain';

@@ -9,12 +9,14 @@
     <div class="panel-body map checkered">
         <div
                 ng-repeat="tileRow in mapPanel.tileRows"
+                ng-init="rowAlt = $odd"
                 class="row">
-            <div
+            <map-tile
                     ng-repeat="tile in tileRow"
-                    map-tile="tile"
+                    options="tile"
+                    alt-color="(rowAlt && $odd) || (!rowAlt && $even)"
                     class="col-xs-6">
-            </div>
+            </map-tile>
         </div>
     </div>
 </div>

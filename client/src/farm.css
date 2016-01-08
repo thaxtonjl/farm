@@ -1,13 +1,19 @@
 .map {
-    font-size: 108px;
+    font-size: 144px;
     line-height: 1.2em;
+    cursor: pointer;
 }
-.map > div > div {
+map-tile {
+    border: 3px solid #ffffff;
     height: 225px;
-    padding-top: 50px;
+    padding-top: 36px;
     text-align: center;
 }
-.map.checkered > div:nth-child(odd) > div:nth-child(odd),
-.map.checkered > div:nth-child(even) > div:nth-child(even) {
+.map.checkered map-tile.map-tile-alt-color {
     background-color: #f8f8f8;
+    border-color: #f8f8f8;
+}
+.map.checkered map-tile.map-tile-alt-color.map-tile-active,
+map-tile.map-tile-active {
+    border-color: #337ab7;
 }
