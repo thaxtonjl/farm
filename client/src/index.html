@@ -10,10 +10,13 @@
         <script src="bower-components/angular/angular.js"></script>
         <script src="bower-components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="farm-app.js"></script>
+        <script src="directives/goal-panel/goal-panel.js"></script>
+        <script src="directives/goal-panel/goal-panel-ctrl.js"></script>
         <script src="directives/map-panel/map-panel.js"></script>
         <script src="directives/map-panel/map-panel-ctrl.js"></script>
         <script src="directives/map-tile/map-tile.js"></script>
         <script src="directives/map-tile/map-tile-ctrl.js"></script>
+        <script src="services/state-manager.js"></script>
     </head>
     <body>
         <div class="container-fluid">
@@ -23,19 +26,7 @@
             <div class="row">
                 <map-panel class="col-xs-12 col-md-7"></map-panel>
                 <div class="col-xs-12 col-md-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Goals</h2>
-                        </div>
-                        <ul class="list-group">
-                            <li
-                                    class="list-group-item goal"
-                                    data-grade="B">
-                                <div class="goal-progress" style="width:85%"></div>
-                                <div class="goal-title">Grade: B</div>
-                            </li>
-                        </ul>
-                    </div>
+                    <goal-panel></goal-panel>
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <!--<div class="btn-group pull-right" role="group">-->

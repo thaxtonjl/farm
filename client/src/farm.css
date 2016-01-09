@@ -21,12 +21,17 @@ map-tile.map-tile-active {
     position: relative;
     height: 40px;
 }
-.goal div {
+.goal .goal-title {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    height: 20px;
+    padding: 0 5px;
+}
+.goal .goal-progress {
     position: absolute;
     top: 0;
     left: 0;
-}
-.goal .goal-progress {
     height: 40px;
     background-color: #dddddd;
 }
@@ -52,10 +57,6 @@ map-tile.map-tile-active {
 .goal[data-grade="F"] {
     color: white;
 }
-.goal[data-grade="F"] .goal-progress {
+.goal[data-grade="F"] div {
     background-color: black;
-}
-.goal .goal-title {
-    height: 20px;
-    padding: 10px;
 }
