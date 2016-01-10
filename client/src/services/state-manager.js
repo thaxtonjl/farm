@@ -21,7 +21,7 @@
         return stateManager;
 
         function init() {
-            stateManager.set('grade', 1, {max: 1, decay: 60000});
+            stateManager.set('grade', 1, {max: 1, decay: 120000});
         }
 
         function getNow() {
@@ -55,11 +55,15 @@
         }
 
         function setState(path, newValue, options) {
-            _.set(state, path, newValue);
-            _.set(stateMeta, path + '.timestamp', getNow());
             if (options) {
                 setOptions(path, options);
             }
+            var meta = _.get(stateMeta, path);
+            if (meta.max && newValue > meta.max) {
+                newValue = meta.max;
+            }
+            _.set(state, path, newValue);
+            _.set(stateMeta, path + '.timestamp', getNow());
         }
 
     }
