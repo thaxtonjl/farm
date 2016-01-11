@@ -13,8 +13,8 @@
         vm.clickStudy = clickStudy;
 
         function clickStudy() {
-            var currentGrade = stateManager.get('grade');
-            stateManager.set('grade', currentGrade + 0.05);
+            var currentGrade = stateManager.get('grade.decimal');
+            stateManager.set('grade.decimal', currentGrade + 0.05);
         }
 
     }
