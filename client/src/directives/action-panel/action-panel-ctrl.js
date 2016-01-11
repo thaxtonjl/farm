@@ -5,16 +5,46 @@
         .module('farmApp')
         .controller('ActionPanelCtrl', ActionPanelCtrl);
 
-    function ActionPanelCtrl(stateManager) {
+    function ActionPanelCtrl($scope, stateManager) {
 
-        var vm = this;
+        var vm = this,
+            baseChorePay = 2;
+
+        // Properties
+        vm.chorePay = 0;
 
         // Methods
+        vm.clickChores = clickChores;
         vm.clickStudy = clickStudy;
 
+        init();
+
+        function init() {
+            $scope.$watch('live.grade.letter', setChorePay);
+        }
+
+        function clickChores() {
+            stateManager.increment('money', vm.chorePay);
+        }
+
         function clickStudy() {
-            var currentGrade = stateManager.get('grade.decimal');
-            stateManager.set('grade.decimal', currentGrade + 0.05);
+            stateManager.increment('grade.decimal', 0.05);
+        }
+
+        function setChorePay(letterGrade) {
+            switch (letterGrade) {
+                case 'A':
+                    vm.chorePay = baseChorePay * 2;
+                    break;
+                case 'B':
+                    vm.chorePay = baseChorePay;
+                    break;
+                case 'C':
+                    vm.chorePay = baseChorePay / 2;
+                    break;
+                default:
+                    vm.chorePay = 0;
+            }
         }
 
     }

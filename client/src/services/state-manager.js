@@ -14,6 +14,7 @@
         var stateManager = {
             calc: calcState,
             get: getState,
+            increment: increment,
             live: {},
             set: setState
         };
@@ -28,6 +29,7 @@
 
             $rootScope.live = stateManager.live;
 
+            stateManager.set('money', 0);
             stateManager.set('grade.decimal', 1, {max: 1, decay: 120000});
             stateManager.calc('grade.letter', ['grade.decimal', _.partial(getLetterGrade, _, false)]);
             stateManager.calc('grade.letterPlus', ['grade.decimal', _.partial(getLetterGrade, _, true)]);
@@ -124,6 +126,11 @@
                 decayValue(path, value, meta);
             }
             return value;
+        }
+
+        function increment(path, amount) {
+            var current = stateManager.get(path);
+            stateManager.set(path, current + amount);
         }
 
         function resolveParams(params) {

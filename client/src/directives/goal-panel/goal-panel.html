@@ -7,7 +7,12 @@
                 class="list-group-item goal"
                 data-grade="{{live.grade.letter}}">
             <div class="goal-progress" style="width:{{(live.grade.decimal * 100).toFixed(4)}}%"></div>
-            <div class="goal-title">Grade: {{live.grade.letterPlus}}</div>
+            <div class="goal-title">Grades: {{live.grade.letterPlus}}</div>
+        </li>
+        <li
+                ng-if="live.money"
+                class="list-group-item goal">
+            <div class="goal-title">Money: ${{live.money}}</div>
         </li>
     </ul>
 </div>
