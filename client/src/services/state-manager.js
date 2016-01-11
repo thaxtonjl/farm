@@ -5,7 +5,7 @@
         .module('farmApp')
         .factory('stateManager', stateManagerFactory);
 
-    function stateManagerFactory() {
+    function stateManagerFactory($interval) {
 
         var stateMeta = {};
 
@@ -13,8 +13,11 @@
 
         var stateManager = {
             get: getState,
+            live: {},
             set: setState
         };
+
+        var updateList = [];
 
         init();
 
@@ -22,6 +25,11 @@
 
         function init() {
             stateManager.set('grade', 1, {max: 1, decay: 120000});
+            $interval(function () {
+                _.each(updateList, function (path) {
+                    stateManager.get(path);
+                });
+            }, 500);
         }
 
         function getNow() {
@@ -48,6 +56,9 @@
         function setOptions(path, options) {
             if (options.decay) {
                 _.set(stateMeta, path + '.decay', options.decay);
+                if (!_.includes(updateList, path)) {
+                    updateList.push(path);
+                }
             }
             if (options.max) {
                 _.set(stateMeta, path + '.max', options.max);
@@ -63,6 +74,7 @@
                 newValue = meta.max;
             }
             _.set(state, path, newValue);
+            _.set(stateManager.live, path, newValue);
             _.set(stateMeta, path + '.timestamp', getNow());
         }
 

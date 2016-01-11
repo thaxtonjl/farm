@@ -5,41 +5,47 @@
         .module('farmApp')
         .controller('GoalPanelCtrl', GoalPanelCtrl);
 
-    function GoalPanelCtrl($interval, $scope, stateManager) {
+    function GoalPanelCtrl(stateManager) {
 
         var vm = this;
 
         // Properties
-        vm.grade = 0;
-        vm.letterGrade = 'E';
+        vm.live = stateManager.live;
 
-        init();
+        // Methods
+        vm.getLetterGrade = getLetterGrade;
 
-        function init() {
+        function getLetterGrade(grade, plusMinus) {
 
-            var promise = $interval(fetchGrade, 500);
-            fetchGrade();
-            $scope.$on('$destroy', clearTheInterval);
+            var letterGrade;
+            grade = Math.round(grade * 100);
 
-            function clearTheInterval() {
-                $interval.cancel(promise);
+            if (grade >= 90) {
+                letterGrade = 'A';
+            } else if (grade >= 80) {
+                letterGrade = 'B';
+            } else if (grade >= 70) {
+                letterGrade = 'C';
+            } else if (grade >= 60) {
+                letterGrade = 'D';
+            } else {
+                letterGrade = 'F';
             }
 
-            function fetchGrade() {
-                var grade = stateManager.get('grade') * 100;
-                vm.grade = grade.toFixed(4);
-                if (grade >= 89.5) {
-                    vm.letterGrade = 'A';
-                } else if (grade >= 79.5) {
-                    vm.letterGrade = 'B';
-                } else if (grade >= 69.5) {
-                    vm.letterGrade = 'C';
-                } else if (grade >= 59.5) {
-                    vm.letterGrade = 'D';
+            if (plusMinus && letterGrade !== 'F') {
+                if (grade >= 100) {
+                    letterGrade += '+';
                 } else {
-                    vm.letterGrade = 'F';
+                    grade %= 10;
+                    if (grade <= 2) {
+                        letterGrade += '-';
+                    } else if (grade >= 7) {
+                        letterGrade += '+';
+                    }
                 }
             }
+
+            return letterGrade;
 
         }
 

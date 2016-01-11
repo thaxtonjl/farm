@@ -5,9 +5,9 @@
     <ul class="list-group">
         <li
                 class="list-group-item goal"
-                data-grade="{{goalPanel.letterGrade}}">
-            <div class="goal-progress" style="width:{{goalPanel.grade}}%"></div>
-            <div class="goal-title">Grade: {{goalPanel.letterGrade}}</div>
+                data-grade="{{goalPanel.getLetterGrade(goalPanel.live.grade)}}">
+            <div class="goal-progress" style="width:{{(goalPanel.live.grade * 100).toFixed(4)}}%"></div>
+            <div class="goal-title">Grade: {{goalPanel.getLetterGrade(goalPanel.live.grade, true)}}</div>
         </li>
     </ul>
 </div>
