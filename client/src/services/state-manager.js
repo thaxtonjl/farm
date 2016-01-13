@@ -30,7 +30,7 @@
             $rootScope.live = stateManager.live;
 
             stateManager.set('money', 0);
-            stateManager.set('grade.decimal', 1, {max: 1, decay: 120000});
+            stateManager.set('grade.decimal', 0.69, {max: 1, decay: 180000});
             stateManager.calc('grade.letter', ['grade.decimal', _.partial(getLetterGrade, _, false)]);
             stateManager.calc('grade.letterPlus', ['grade.decimal', _.partial(getLetterGrade, _, true)]);
 

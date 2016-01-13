@@ -7,7 +7,9 @@
 
     function GoalPanelCtrl() {
 
-        //
+        var vm = this;
+
+        this.moneyGoal = 100;
 
     }
 

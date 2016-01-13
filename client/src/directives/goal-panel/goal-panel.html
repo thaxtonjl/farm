@@ -12,6 +12,7 @@
         <li
                 ng-if="live.money"
                 class="list-group-item goal">
+            <div class="goal-progress" style="width:{{(live.money * 100 / goalPanel.moneyGoal).toFixed(4)}}%"></div>
             <div class="goal-title">Money: ${{live.money}}</div>
         </li>
     </ul>
