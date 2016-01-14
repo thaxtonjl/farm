@@ -3,6 +3,7 @@
 
     angular
         .module('farmApp', [
+            'ngAnimate',
             'ui.bootstrap'
         ]);
 

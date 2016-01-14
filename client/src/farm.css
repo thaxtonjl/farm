@@ -60,3 +60,39 @@ map-tile.map-tile-active {
 .goal[data-grade="F"] div {
     background-color: black;
 }
+timeout-button {
+    display: inline-block;
+    position: relative;
+    padding: 5px 10px;
+    border: 1px solid #337ab7;
+    color: #337ab7;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+timeout-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+timeout-button.disabled {
+    border-color: #999999;
+    color: #999999;
+    text-decoration: none;
+    cursor: auto;
+}
+timeout-button .button-cooldown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #dddddd;
+}
+timeout-button .button-cooldown span {
+    display: block;
+    height: 30px;
+    padding: 5px 10px;
+}
