@@ -11,10 +11,16 @@
             <timeout-button
                     button-action="actionPanel.clickStudy()"
                     button-timeout="4500"
-                    button-title="Study">
+                    button-title="'Study'">
             </timeout-button>
         </li>
-        <li class="list-group-item"><a href ng-click="actionPanel.clickChores()">Chores<span ng-if="actionPanel.chorePay"> (${{actionPanel.chorePay}})</span></a></li>
+        <li class="list-group-item">
+            <timeout-button
+                    button-action="actionPanel.clickChores()"
+                    button-timeout="6000"
+                    button-title="'Chores' + (actionPanel.chorePay ? (' ($' + actionPanel.chorePay + ')') : '')">
+            </timeout-button>
+        </li>
         <li
                 ng-if="live.money >= 100"
                 class="list-group-item"><a href ng-click="actionPanel.clickStudy()">Buy BB-Gun (-$100)</a></li>

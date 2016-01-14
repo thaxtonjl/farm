@@ -11,7 +11,7 @@
             bindToController: {
                 buttonAction: '&',
                 buttonTimeout: '=',
-                buttonTitle: '@'
+                buttonTitle: '='
             },
             controller: 'TimeoutButtonCtrl',
             controllerAs: 'timeoutButton',
@@ -23,12 +23,9 @@
 
         function timeoutButtonLink($scope, el, attrs, ctrl) {
 
+            el.data('buttonTimeout', ctrl.buttonTimeout);
             el.on('click', handleClick);
-            el.on('buttonCooldownDone', function () {
-                $scope.$apply(function () {
-                    ctrl.isDisabled = false;
-                });
-            });
+            el.on('buttonCooldownDone', buttonCooldownDone);
 
             $scope.$watch(isDisabled, function (isDisabledIsTruthy) {
                 if (isDisabledIsTruthy) {
@@ -38,6 +35,12 @@
                 }
             });
 
+            function buttonCooldownDone() {
+                $scope.$apply(function () {
+                    ctrl.isDisabled = false;
+                });
+            }
+
             function handleClick() {
                 $scope.$apply(ctrl.handleClick);
             }
@@ -45,11 +48,6 @@
             function isDisabled() {
                 return ctrl.isDisabled;
             }
-
-            //function startCooldown() {
-            //    el.addClass('disabled');
-            //    ctrl.buttonAction();
-            //}
 
         }
 

@@ -93,6 +93,7 @@ timeout-button .button-cooldown {
 }
 timeout-button .button-cooldown span {
     display: block;
+    white-space: nowrap;
     height: 30px;
     padding: 5px 10px;
 }
