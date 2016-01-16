@@ -30,6 +30,7 @@
             $rootScope.live = stateManager.live;
 
             stateManager.set('money', 0);
+            stateManager.set('action.study.timeout', 4500, {min: 0});
             stateManager.set('grade.rest', 0.5, {max: 1, min: 0});
             stateManager.set('grade.decimal', 0.69, {max: 1, min: stateManager.get('grade.rest'), decay: 90000});
             stateManager.calc('grade.letter', ['grade.decimal', _.partial(getLetterGrade, _, false)]);
@@ -77,6 +78,7 @@
                 }
                 stateManager.set(path, value);
             }
+            return value;
         }
 
         function getLetterGrade(grade, plusMinus) {
@@ -121,17 +123,17 @@
             return (new Date()).valueOf();
         }
 
-        function getState(path) {
+        function getState(path, fallback) {
             var meta = getMeta(path);
-            var value = _.get(state, path);
+            var value = _.has(state, path) ? _.get(state, path) : fallback;
             if (meta.decay && value > 0) {
-                decayValue(path, value, meta);
+                value = decayValue(path, value, meta);
             }
             return value;
         }
 
         function increment(path, amount) {
-            var current = stateManager.get(path) || 0;
+            var current = stateManager.get(path, 0);
             stateManager.set(path, current + (amount || 1));
         }
 
