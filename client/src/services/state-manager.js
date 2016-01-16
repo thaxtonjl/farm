@@ -129,8 +129,8 @@
         }
 
         function increment(path, amount) {
-            var current = stateManager.get(path);
-            stateManager.set(path, current + amount);
+            var current = stateManager.get(path) || 0;
+            stateManager.set(path, current + (amount || 1));
         }
 
         function resolveParams(params) {
