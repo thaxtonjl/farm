@@ -30,7 +30,8 @@
             $rootScope.live = stateManager.live;
 
             stateManager.set('money', 0);
-            stateManager.set('grade.decimal', 0.69, {max: 1, min: 0.5, decay: 180000});
+            stateManager.set('grade.rest', 0.5, {max: 1, min: 0});
+            stateManager.set('grade.decimal', 0.69, {max: 1, min: stateManager.get('grade.rest'), decay: 90000});
             stateManager.calc('grade.letter', ['grade.decimal', _.partial(getLetterGrade, _, false)]);
             stateManager.calc('grade.letterPlus', ['grade.decimal', _.partial(getLetterGrade, _, true)]);
 
@@ -70,7 +71,7 @@
             var time = getNow() - meta.timestamp;
             var min = meta.min || 0;
             if (time > 50 && value > min) {
-                value -= time * meta.max / meta.decay;
+                value -= time * (meta.max - (meta.min || 0)) / meta.decay;
                 if (value < min) {
                     value = min;
                 }
@@ -160,20 +161,23 @@
         }
 
         function setState(path, newValue, options) {
+            var meta;
             if (options) {
                 setOptions(path, options);
             }
-            var meta = getMeta(path);
-            if (meta.max && newValue > meta.max) {
-                newValue = meta.max;
-            }
-            _.set(state, path, newValue);
-            _.set(stateManager.live, path, newValue);
-            setMeta(path + '.timestamp', getNow());
-            if (meta.derivatives) {
-                _.each(meta.derivatives, function (calc) {
-                    calc();
-                });
+            if (typeof newValue === 'number' || typeof newValue === 'boolean' || typeof newValue === 'string') {
+                meta = getMeta(path);
+                if (typeof meta.max === 'number' && newValue > meta.max) {
+                    newValue = meta.max;
+                }
+                _.set(state, path, newValue);
+                _.set(stateManager.live, path, newValue);
+                setMeta(path + '.timestamp', getNow());
+                if (meta.derivatives) {
+                    _.each(meta.derivatives, function (calc) {
+                        calc();
+                    });
+                }
             }
         }
 

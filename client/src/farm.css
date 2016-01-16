@@ -45,13 +45,13 @@ map-tile.map-tile-active {
 .goal[data-grade="B"] .goal-progress {
     background-color: yellow;
 }
-.goal[data-grade="C"] .goal-progress {
+.goal[data-grade="C"] div {
     background-color: orange;
 }
 .goal[data-grade="D"] {
     color: white;
 }
-.goal[data-grade="D"] .goal-progress {
+.goal[data-grade="D"] div {
     background-color: red;
 }
 .goal[data-grade="F"] {
