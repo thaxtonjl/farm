@@ -30,7 +30,7 @@
             $rootScope.live = stateManager.live;
 
             stateManager.set('money', 0);
-            stateManager.set('grade.decimal', 0.69, {max: 1, decay: 180000});
+            stateManager.set('grade.decimal', 0.69, {max: 1, min: 0.5, decay: 180000});
             stateManager.calc('grade.letter', ['grade.decimal', _.partial(getLetterGrade, _, false)]);
             stateManager.calc('grade.letterPlus', ['grade.decimal', _.partial(getLetterGrade, _, true)]);
 
@@ -68,10 +68,11 @@
 
         function decayValue(path, value, meta) {
             var time = getNow() - meta.timestamp;
-            if (time > 50) {
+            var min = meta.min || 0;
+            if (time > 50 && value > min) {
                 value -= time * meta.max / meta.decay;
-                if (value < 0) {
-                    value = 0;
+                if (value < min) {
+                    value = min;
                 }
                 stateManager.set(path, value);
             }
@@ -152,6 +153,9 @@
             }
             if (options.max) {
                 setMeta(path + '.max', options.max);
+            }
+            if (options.min) {
+                setMeta(path + '.min', options.min);
             }
         }
 

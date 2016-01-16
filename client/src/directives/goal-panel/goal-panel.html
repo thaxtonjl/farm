@@ -6,7 +6,7 @@
         <li
                 class="list-group-item goal"
                 data-grade="{{live.grade.letter}}">
-            <div class="goal-progress" style="width:{{(live.grade.decimal * 100).toFixed(4)}}%"></div>
+            <div class="goal-progress" style="width:{{((live.grade.decimal - 0.5) * 200).toFixed(4)}}%"></div>
             <div class="goal-title">Grades: {{live.grade.letterPlus}}</div>
         </li>
         <li
